@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" th:href="@{/css/show-list.css}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper #00897b teal darken-1">
+      <a href="#" class="brand-logo">タスク管理君</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a th:href="@{/task/show-list}">
+            タスク一覧
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col s12 m10 offset-m1"> -->
+        <div class="col s12">
+        <button data-target="modal-form" class="btn modal-trigger">タスクを追加</button>
+        <div id="modal-form" class="modal">
+          <div class="modal-content">
+            <div id="modal-form" class="modal-form">
+              <div class="modal-content">
+                <form 
+                  th:action="@{/task/create}"
+                  method="post"
+                >
+                  <div class="input-field">
+                    <input type="text" name="content" id="content">
+                    <label for="content">タスクの内容</label>
+                  </div>
+
+                  <div class="input-field">
+                    <input type="text" name="date" class="datepicker">
+                    <label for="date">いつまで？</label>
+                  </div>
+                </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
+        </div>
+
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <ul>
+      <li th:each="task : ${taskList}" th:text="${task.name}"></li>
+    </ul>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+  <script th:src="@{/js/show-list.js}"></script>
+</body>
+</html>

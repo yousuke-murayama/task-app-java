@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" th:href="@{/css/to-signup.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper #00897b teal darken-1">
+      <a href="#" class="brand-logo">タスク管理君</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a th:href="@{/}">
+            <i class="material-icons left">exit_to_app</i>
+            ログイン
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/to-signup}">
+            <i class="material-icons left">person_add</i>
+            登録
+           </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+        <div class="col s12 m10 offset-m1">
+          <div class="card #fafafa grey lighten-5 signup-card">
+            <div class="card-content">
+              <div class="card-title signup-card-title">
+                ユーザ登録
+              </div>
+              <form 
+                action="to-login.html"
+                th:action="@{/signup}"
+                method="post"
+                th:object="${userForm}"
+              >
+
+                <div class="error-msg" th:if="${#fields.hasErrors('name')}">
+                  <i class="material-icons left">report_problem</i>
+                  <div th:errors="*{name}"></div>
+                </div>
+              
+                <div class="input-field">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input type="text" name="name" id="name" th:field="*{name}">
+                  <label for="name">名前</label>
+                </div>
+
+                <div class="error-msg" th:if="${#fields.hasErrors('email')}">
+                  <i class="material-icons left">report_problem</i>
+                  <div th:errors="*{email}"></div>
+                </div>
+                
+                <div class="input-field">
+                  <input type="text" name="email" id="email" th:field="*{email}">
+                  <label for="email">メールアドレス</label>
+                </div>
+
+                <div class="error-msg" th:if="${#fields.hasErrors('zipcode')}">
+                  <i class="material-icons left">report_problem</i>
+                  <div th:errors="*{zipcode}"></div>
+                </div>
+                
+                <div class="input-field">
+                  <input type="text" name="zipcode" id="zipcode" th:field="*{zipcode}">
+                  <label for="zipcode">郵便番号</label>
+                </div>
+
+                <div class="error-msg" th:if="${#fields.hasErrors('prefecture')}">
+                  <i class="material-icons left">report_problem</i>
+                  <div th:errors="*{prefecture}"></div>
+                </div>
+                
+                <div class="input-field">
+                  <input type="text" name="prefecture" id="prefecture" th:field="*{prefecture}">
+                  <label for="prefecture">県名</label>
+                </div>
+
+                <div class="error-msg" th:if="${#fields.hasErrors('city')}">
+                  <i class="material-icons left">report_problem</i>
+                  <div th:errors="*{city}"></div>
+                </div>
+                
+                <div class="input-field">
+                  <input type="text" name="city" id="city" th:field="*{city}">
+                  <label for="city">市町村</label>
+                </div>
+
+                <div class="error-msg" th:if="${#fields.hasErrors('address')}">
+                  <i class="material-icons left">report_problem</i>
+                  <div th:errors="*{address}"></div>
+                </div>
+                
+                <div class="input-field">
+                  <input type="text" name="address" id="address" th:field="*{address}">
+                  <label for="address">番地</label>
+                </div>
+
+                <div class="error-msg" th:if="${#fields.hasErrors('tel')}">
+                  <i class="material-icons left">report_problem</i>
+                  <div th:errors="*{tel}"></div>
+                </div>
+                
+                <div class="input-field">
+                  <input type="tel" name="tel" id="tel" th:field="*{tel}">
+                  <label for="tel">電話番号</label>
+                </div>
+    
+                <div class="error-msg" th:if="${#fields.hasErrors('password')}">
+                  <i class="material-icons left">report_problem</i>
+                  <div th:errors="*{password}"></div>
+                </div>
+            
+                <div class="input-field">
+                  <i class="material-icons prefix">vpn_key</i>
+                  <input type="password" name="password" id="password" th:field="*{password}">
+                  <label for="password">パスワード</label>
+                </div>
+    
+                <div class="error-msg" th:if="${#fields.hasErrors('passwordConfirmation')}">
+                  <i class="material-icons left">report_problem</i>
+                  <div th:errors="*{passwordConfirmation}"></div>
+                </div>
+
+                <div class="input-field">
+                  <i class="material-icons prefix">vpn_key</i>
+                  <input type="password" name="passwordConfirmation" id="passwordConfirmation" th:field="*{passwordConfirmation}">
+                  <label for="passwordConfirmation">確認用パスワード</label>
+                </div>
+
+                <div class="signup-card-btn-container">
+                  <button class="btn waves-effect waves-light signup-card-btn">
+                    登録
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+</body>
+</html>
